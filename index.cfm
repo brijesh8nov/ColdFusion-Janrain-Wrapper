@@ -15,8 +15,9 @@
 <body>
 <!--- INTIAL SETTINGS --->
 <cfset iniFile = expandPath("./jainrain.ini")>
+<cfset appname = getProfileString(iniFile, "appname", "appname")>
 <cfset tokenURL = getProfileString(iniFile, "tokenURL", "tokenURL")>
 <!--- Display the LOGIN LOGOS --->
-<iframe src="http://weborchid.rpxnow.com/openid/embed?token_url=<cfoutput>#urlEncodedFormat(tokenURL)#</cfoutput>" scrolling="no" frameBorder="no" allowtransparency="true" style="width:400px;height:240px"></iframe> 
+<iframe src="http://<cfoutput>#appname#</cfoutput>.rpxnow.com/openid/embed?token_url=<cfoutput>#urlEncodedFormat(tokenURL)#</cfoutput>" scrolling="no" frameBorder="no" allowtransparency="true" style="width:400px;height:240px"></iframe> 
 </body>
 </html>
