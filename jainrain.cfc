@@ -12,9 +12,11 @@
 	<cfargument name="apiKey" required="yes" type="string">
     <cfargument name="apiURL" required="yes" type="string">
     <cfargument name="apiToken" required="yes" type="string">
+    <cfargument name="resultFormat" required="yes" type="string">
     	<cfset variables.apiKey = Arguments.apikey/>
         <cfset variables.apiURL = Arguments.apiURL/>
         <cfset variables.apiToken = Arguments.apiToken/>
+        <cfset variables.resultFormat = Arguments.resultFormat/>
         <cfreturn this>
 </cffunction>
         
@@ -39,11 +41,10 @@
 <!--- Function to Parse the results --->
 <cffunction name="parseResults" access="public" returntype="any" output="no" hint="Used to PARSE the results for Jainrain Auth">
 	<cfargument name="authInfo" required="yes" type="any">
-    <cfargument name="resultFormat" required="yes" type="string">
     
-    <cfif Arguments.resultFormat IS 'xml'>
+    <cfif variables.resultFormat IS 'xml'>
     	<cfset parsedObj = xmlParse(Arguments.authInfo)>
-    <cfelseif Arguments.resultFormat IS 'json'>
+    <cfelseif variables.resultFormat IS 'json'>
     	<cfset parsedObj = deserializeJson(Arguments.authInfo)>
     <cfelse>
     	<cfreturn 'Invalid return Format'>
