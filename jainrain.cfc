@@ -24,14 +24,14 @@
 <cffunction name="auth" returntype="any" access="public" output="no" hint="Used to get basic auth info">
     <cfargument name="extended" required="no" type="boolean" default="false" hint="Returns the extended Registration Data">
     <cfargument name="tokenURL" required="no" type="any" hint="validation of specified token url">
-    <cfargument name="format" required="no" type="string" default="json" hint="Return Format can be JSON or XML">
+    
         <!--- ---------------------- --->
         <!--- CFHTTP the information --->
         <!--- ---------------------- --->
         <cfhttp url="#variables.apiUrl#" method="post">
         	<cfhttpparam type="formfield" name="apiKey" value="#variables.apikey#">
             <cfhttpparam type="formfield" name="token" value="#variables.apiToken#">
-            <cfhttpparam type="formfield" name="format" value="#Arguments.format#">
+            <cfhttpparam type="formfield" name="format" value="#variables.resultFormat#">
             <cfhttpparam type="formfield" name="extended" value="#Arguments.extended#">
         </cfhttp>
         
