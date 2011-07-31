@@ -14,14 +14,15 @@
 
 <cfif form.Token NEQ ''>
 	<cfset Token = form.Token />
-    <cfset JRObj = createObject("component","jainrain").init(ApiKey,apiURL,Token)/>
+    <cfset JRObj = createObject("component","jainrain").init(ApiKey,apiURL,Token,resultFormat)/>
     <cfset authInfo = JRObj.auth() />
     
     <!--- ---------------------------------------------------------------- --->
 	<!--- The below STEP should be according to your website configuration --->
     <!--- ---------------------------------------------------------------- --->
     
-    <cfset results = createObject("component","jainrain").parseResults(authInfo,resultFormat)/>
+    <cfset results = JRObj.parseResults(authInfo)/>
+    
     <cfdump var="#results#">
 </cfif>
 
